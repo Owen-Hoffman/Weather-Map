@@ -1,2 +1,2 @@
 # Weather-Map
-A web application that displays dynamic visualizations of weather occurances in the PNW
+A web application that displays dynamic visualization of weather conditions in the PNW
