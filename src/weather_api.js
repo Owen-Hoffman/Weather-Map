@@ -40,3 +40,14 @@ window.addEventListener("load", () => {
     });
   }
 });
+
+//example of how to call variables in body
+
+/* <div class="container">
+<!-- <div class="icon">---</div> -->
+<div class="temp">-°C</div>
+<div class="summary">----</div>
+<div class="location"></div>
+</div>
+<!--Linking the javascript code-->
+<script src="src/weather_api.js"></script> */
