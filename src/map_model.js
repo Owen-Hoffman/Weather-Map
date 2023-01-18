@@ -4,28 +4,27 @@ if (BABYLON.Engine.isSupported()) {
     var ENGINE = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
     var createScene = function () {
-        // Creates a basic Babylon Scene object
         var scene = new BABYLON.Scene(ENGINE);
-        // Creates and positions a free camera
-        var camera = new BABYLON.FreeCamera("camera1",
-            new BABYLON.Vector3(0, 5, -10), scene);
-        // Targets the camera to scene origin
-        camera.setTarget(BABYLON.Vector3.Zero());
-        // This attaches the camera to the canvas
+
+        // Camera
+        var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, BABYLON.Vector3.Zero(), scene);
+        camera.lowerBetaLimit = 0.1;
+        camera.upperBetaLimit = (Math.PI / 2) * 0.9;
+        camera.lowerRadiusLimit = 30;
+        camera.upperRadiusLimit = 150;
         camera.attachControl(canvas, true);
-        // Creates a light, aiming 0,1,0 - to the sky
+
+        // light
         var light = new BABYLON.HemisphericLight("light",
             new BABYLON.Vector3(0, 1, 0), scene);
-        // Dim the light a small amount - 0 to 1
         light.intensity = 0.7;
-        // Built-in 'sphere' shape.
-        var sphere = BABYLON.MeshBuilder.CreateSphere("sphere",
-            { diameter: 2, segments: 32 }, scene);
-        // Move the sphere upward 1/2 its height
-        sphere.position.y = 1;
-        // Built-in 'ground' shape.
-        var ground = BABYLON.MeshBuilder.CreateGround("ground",
-            { width: 6, height: 6 }, scene);
+
+        //map
+        var groundMaterial = new BABYLON.StandardMaterial("ground", scene);
+        groundMaterial.diffuseTexture = new BABYLON.Texture("src/assets/earth.jpg", scene);
+
+        var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "src/assets/worldHeightMap.jpg", 200, 200, 250, 0, 10, scene, false);
+        ground.material = groundMaterial;
         return scene;
     };
 
