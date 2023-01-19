@@ -25,6 +25,16 @@ if (BABYLON.Engine.isSupported()) {
 
         var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "src/assets/worldHeightMap.jpg", 200, 200, 250, 0, 10, scene, false);
         ground.material = groundMaterial;
+
+        //cloud test
+        var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {}, scene);
+        
+        var pcs= new BABYLON.PointsCloudSystem("pcs", 1, scene) 
+
+        pcs.addVolumePoints(sphere, 10000);
+        pcs.buildMeshAsync().then(() => sphere.dispose());
+
+        //return
         return scene;
     };
 
