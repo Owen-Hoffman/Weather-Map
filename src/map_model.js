@@ -21,9 +21,9 @@ if (BABYLON.Engine.isSupported()) {
 
         //map
         var groundMaterial = new BABYLON.StandardMaterial("ground", scene);
-        groundMaterial.diffuseTexture = new BABYLON.Texture("src/assets/earth.jpg", scene);
+        groundMaterial.diffuseTexture = new BABYLON.Texture("src/assets/WA_Txt.jpg", scene);
 
-        var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "src/assets/worldHeightMap.jpg", 200, 200, 250, 0, 10, scene, false);
+        var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "src/assets/WA.png", 200, 200, 250, 0, 10, scene, false);
         ground.material = groundMaterial;
 
         //cloud test
